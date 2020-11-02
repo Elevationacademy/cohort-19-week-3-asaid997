@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="box" onmouseenter="enterColor()" onmouseleave="leaveColor()" onclick="box_onclick()">Hover over me!</div>
+
+
+    <ul id="ulEle" onclick="ul_onclick()">
+        <li>Starter item</li>
+        <li>Clicl us</li>
+    </ul>
+
+    <div id="ex2">
+        <input type="text" id="Reservatio_input"></input>
+        <button id="Reservatio_button">Check reservation</button>
+    </div>
+
+    <div id="ex3">
+        <div id="container"></div>
+    </div>
+
+    <form id="form">
+        <div id="container1" class="main_containers">
+            <div class="middle_container text_font"><label class="cell_style">Name</label></div>
+            <div class="middle_container text_font"><input id="name" type="text" class="cell_style"></div>
+        </div>
+        <div id="container2" class="middle_container main_containers">
+            <div class="column" id="col1">
+                <div><label class="cell_style text_font">Desired Salary</label></div>
+                <div><input id="salary" type="number" class="cell_style text_font"></div>
+            </div>
+            <div class="column" id="col2">
+                <div><label class="cell_style text_font">Birthday</label></div>
+                <div><input id="birthday" type="date" class="cell_style text_font"></div>
+            </div>
+        </div>
+        <div id="container3" class="main_containers">
+            <div class="middle_container text_font"><label class="cell_style">Phone</label></div>
+            <div class="middle_container text_font"><input id="phone" type="number" class="cell_style"></div>
+        </div>
+        <div class="middle_container main_containers" id="container4">
+            <span id="error_output" class="text_font"></span>
+            <button id="sub" class="text_font" type="button">Submit</button>
+        </div>
+    </form>
+    <script src="main.js"></script>
+</body>
+
+</html>
