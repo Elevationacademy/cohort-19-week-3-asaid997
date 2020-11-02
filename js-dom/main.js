@@ -66,6 +66,7 @@ const boxex_function = {
     colorBox : function(object){
         object.style.backgroundColor = "rgb("+getRandomInt(255)+", "+getRandomInt(255)+", "+getRandomInt(255)+")"
     },
+    //extra:
     checkColorsMatchings: function(){
         const firstBox = boxes[0]
         for(let i = 1; i<6 ; i++){
@@ -81,6 +82,7 @@ const boxex_function = {
 
 const onMouseEnter = function(){
     boxex_function.colorBox(this)
+    //extra:
     boxex_function.checkColorsMatchings()
 }
 
