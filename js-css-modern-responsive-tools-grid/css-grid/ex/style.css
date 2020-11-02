@@ -3,7 +3,7 @@
 <div id="chat_Window">
      */
 #container{
-    height: 50vh;
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
@@ -16,10 +16,11 @@
 }
 
 #friends{
-    font-size: large;
+    font-size: 3vh;
 }
 
 .friends{
+    font-size: 2.5vh;
     height: fit-content;
     display: grid;
     align-content: center;
@@ -73,4 +74,8 @@
 #send{
     color: honeydew;
     background-color: rgb(121, 30, 185);
+}
+
+.text{
+    font-size: 2.5vh;
 }
