@@ -1,0 +1,75 @@
+/* <div id="container">
+<div id="sidbar">
+<div id="chat_Window">
+     */
+#container{
+    height: 33vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+#sidbar{
+    background-color: rgb(155, 77, 155);
+    display: grid;
+    grid-template-rows: 2fr repeat(4,1fr);
+    padding: 10px;
+}
+
+#friends{
+    font-size: large;
+}
+
+.friends{
+    height: fit-content;
+    display: grid;
+    align-content: center;
+    background-color: rgb(177, 87, 177);
+}
+
+
+#chat_Window{
+    display: grid;
+    grid-template-rows: 15fr 1fr;
+    background-color: rgb(238, 230, 230);
+}
+
+#messages{
+    padding: 10px;
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.messages{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-self: end;
+    font-family: cursive;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.my_messages{
+    background-color: rgb(31, 179, 31);
+    justify-self: end;
+}
+
+.other_messages{
+    background-color: rgb(192, 192, 192);
+}
+
+.time{
+    display: grid;
+    align-content: end;
+    justify-self: end;
+    font-size: smaller;
+}
+
+#text_submit{
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+}
+#send{
+    color: honeydew;
+    background-color: rgb(121, 30, 185);
+}
