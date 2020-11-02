@@ -3,7 +3,7 @@
 <div id="chat_Window">
      */
 #container{
-    height: 33vh;
+    height: 50vh;
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
@@ -41,8 +41,8 @@
 
 .messages{
     display: grid;
-    grid-template-columns: 3fr 1fr;
     align-self: end;
+    grid-template-columns: 1fr 0fr;
     font-family: cursive;
     width: fit-content;
     border-radius: 5px;
@@ -62,7 +62,8 @@
     display: grid;
     align-content: end;
     justify-self: end;
-    font-size: smaller;
+    font-size: small;
+    margin-left: 6px;
 }
 
 #text_submit{
