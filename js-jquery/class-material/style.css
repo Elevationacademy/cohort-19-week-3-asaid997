@@ -1,0 +1,15 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: salmon;
+    border-radius: 5px;
+    border-style: dotted;
+    border-color: seagreen;
+}
+.box2{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: purple;
+    display: inline-block;
+  }
