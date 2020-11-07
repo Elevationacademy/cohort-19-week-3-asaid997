@@ -1,10 +1,32 @@
 const Renderer = function () {
 
-    const getElement = function (class1, dataId, text) {
-        const string = `<div>${text}</div>`
-        const element = $(string)
+    const getGridElement = function (class1) {
+        const element = $(`<div></div>`)
         element.addClass(class1)
-        element.data("id",dataId)
+        return element
+    }
+
+    const getShowCommentsElement = function () {
+        const element = $('<i></i>')
+        element.addClass('show-comments far fa-comments')
+        element.hover(function () {
+            this.classList.add('fas');
+        }, function () {
+            this.classList.remove('fas');
+        })
+        return element
+    }
+
+    const getPostCommentElement = function (class1, dataId, text) {
+        const element = $(`<div>${text}</div>`)
+        element.addClass(class1)
+        element.data("id", dataId)
+        return element
+    }
+
+    const getDeleteElement = function (class1) {
+        const element = $(`<i></i>`)
+        element.addClass(class1)
         return element
     }
 
@@ -12,50 +34,80 @@ const Renderer = function () {
         parent.append(element)
     }
 
+    const addComment = function(postContainer){
+
+        const container = $('<div></div>')
+        container.addClass('add-comment-container')
+        appendElement(container,postContainer)
+        
+        const input = $('<input></input>')
+        input.attr('placeholder','comment')
+        input.addClass('comment-input')
+        appendElement(input,container)
+
+        const submit = $('<i></i>')
+        submit.addClass("far fa-paper-plane add-comment")
+        submit.hover(function(){
+            this.classList.add('fas');
+        }, function () {
+            this.classList.remove('fas');
+        })
+        appendElement(submit,container)
+    }
+
+    const showAllComments = function (post, commentContainer) {
+        commentContainer.text("")
+        for (let comment of post.comments) {
+            const actualComment = getPostCommentElement("comments", comment.id, comment.text)
+            appendElement(actualComment, commentContainer)
+
+            const deleteComment = getDeleteElement("delete-comment far fa-trash-alt")
+            appendElement(deleteComment, actualComment)
+        }
+        addComment(commentContainer)
+    }
+
+
+
     const renderPosts = function (posts) {
         const postsEl = $("#posts")
+        postsEl.text("")
         for (let post of posts) {
-            const element = getElement("post post-text", post.id, post.text)
-            appendElement(element, postsEl)
-            for (let comment of post.comments) {
-                const element2 = getElement("comments", comment.id, comment.text)
-                appendElement(element2, element)
-            }
+            const postContainer = getGridElement('post-container')
+            appendElement(postContainer, postsEl)
+
+            const postAndDeleteContainer = getGridElement('post-deletebutton-container')
+            appendElement(postAndDeleteContainer, postContainer)
+
+            const actualPost = getPostCommentElement("post", post.id, post.text)
+            appendElement(actualPost, postAndDeleteContainer)
+
+            const deletePost = getDeleteElement("delete fas fa-trash")
+            appendElement(deletePost, postAndDeleteContainer)
+
+            const commentContainer = $('<div></div>')
+            commentContainer.addClass('comment-container')
+
+            let commentsShownFlag = true
+            showAllComments(post, commentContainer)
+
+            const showComments = getShowCommentsElement()
+            showComments.click(function () {
+                if (!commentsShownFlag) {
+                    showAllComments(post, commentContainer)
+                    commentsShownFlag = true
+                }
+                else {
+                    commentContainer.text("")
+                    commentsShownFlag = false
+                }
+            })
+            appendElement(showComments, postContainer)
+
+            appendElement(commentContainer, postContainer)
+
         }
     }
 
     return { renderPosts }
 }
-
-
-// The renderPosts function should receive one parameter: posts
-//      This parameter is the array of post objects that comes from your Tweetermodule
-// The function should first empty the #posts element
-// It should loop through each post in the posts array and append some HTML to #posts
-//      Use jQuery to create and add the elements
-//      Functions are your friends
-// Notice that each post has its own text, as well as the text of its comments
-//      You need to generate the HTML for both
-//      Make sure you're adding each post and comment's ID in a data-id attribute
-// Use the CSS below for styling - you should be able to figure out which elements receive which class
-// We highly encourage you to use template literals
-
-// text: "Aw man, I wanted to be first",
-// id: "p2",
-// comments: [
-//     { id: "c4", text: "Don't wory second poster, you'll be first one day." },
-//     { id: "c5", text: "Yeah, believe in yourself!" },
-//     { id: "c6", text: "Haha second place what a joke." }
-
-
-// .post{
-//     box-shadow: 1px 1px 3px;
-//     margin: 10px;
-//     border-radius: 5px;
-//     padding: 10px;
-// }
-
-// .comments{
-//     margin-left: 10px;
-//     margin: 10px;
-// }

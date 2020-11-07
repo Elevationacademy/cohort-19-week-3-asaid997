@@ -39,13 +39,14 @@ const Tweeter = function () {
                 posts[index].comments.push({ id: "c" + (++commentIdCounter), text: content })
     }
 
-    const removeComment = function(pid,cid){
-        for(let post of posts)
-            if(post.id == pid)
-                for(let index in post.comments)
-                    if(post.comments[index].id == cid)
-                        post.comments.splice(index,1)
+    const removeComment = function (pid, cid) {
+        for (let post of posts)
+            if (post.id == pid)
+                for (let index in post.comments)
+                    if (post.comments[index].id == cid)
+                        post.comments.splice(index, 1)
     }
+
 
     return {
         getPosts,
